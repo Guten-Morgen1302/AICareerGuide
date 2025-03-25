@@ -1,4 +1,3 @@
-
 import type { NextApiRequest, NextApiResponse } from 'next';
 import OpenAI from "openai";
 import { getMockChatResponse } from "../server/mockData";
@@ -52,13 +51,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const aiResponse = response.choices[0].message.content;
       res.status(200).json({ response: aiResponse });
     } catch (apiError) {
-      console.error("OpenAI API error, using fallback response:", apiError);
-      const mockResponse = getMockChatResponse(message);
-      res.status(200).json(mockResponse);
+      console.error("OpenAI API error:", apiError); // Improved logging
+      res.status(500).json({ error: "Internal Server Error during OpenAI API call" });
     }
   } catch (error) {
-    console.error("Error in chat:", error);
-    const mockResponse = getMockChatResponse("help");
-    res.status(200).json(mockResponse);
+    console.error("Error in chat:", error); // Improved logging
+    res.status(500).json({ error: "Internal Server Error" });
   }
 }
