@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Rajdhani:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap');
+
+:root {
+  --neon-cyan: #0ff4c6;
+  --neon-pink: #f81ce5;
+  --electric-purple: #7928ca;
+  --cyber-black: #0a0a0f;
+  --cyber-dark: #151520;
+  --cyber-gray: #8a8f98;
+  --neon-green: #00ff00;
+  --neon-red: #ff3838;
+  --neon-yellow: #ffb800;
+}
+
+body {
+  background-color: var(--cyber-black);
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(121, 40, 202, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(15, 244, 198, 0.1) 0%, transparent 50%),
+    linear-gradient(rgba(10, 10, 15, 0.9), rgba(10, 10, 15, 0.9)),
+    repeating-linear-gradient(transparent, transparent 2px, rgba(15, 244, 198, 0.03) 2px, rgba(15, 244, 198, 0.03) 4px);
+  background-attachment: fixed;
+  background-size: 100% 100%, 100% 100%, 100% 100%, 50px 50px;
+  font-family: 'Rajdhani', sans-serif;
+}
+
+.font-orbitron {
+  font-family: 'Orbitron', sans-serif;
+}
+
+.font-rajdhani {
+  font-family: 'Rajdhani', sans-serif;
+}
+
+.font-mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.neon-border {
+  position: relative;
+}
+
+.neon-border::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 1px solid rgba(15, 244, 198, 0.5);
+  box-shadow: 0 0 10px rgba(15, 244, 198, 0.5), 
+              0 0 20px rgba(15, 244, 198, 0.3), 
+              inset 0 0 10px rgba(15, 244, 198, 0.2);
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.neon-text {
+  text-shadow: 
+    0 0 5px rgba(15, 244, 198, 0.7),
+    0 0 10px rgba(15, 244, 198, 0.5),
+    0 0 15px rgba(15, 244, 198, 0.3);
+}
+
+.neon-text-pink {
+  text-shadow: 
+    0 0 5px rgba(248, 28, 229, 0.7),
+    0 0 10px rgba(248, 28, 229, 0.5),
+    0 0 15px rgba(248, 28, 229, 0.3);
+}
+
+.holographic {
+  position: relative;
+  overflow: hidden;
+  background: rgba(21, 21, 32, 0.7);
+}
+
+.holographic::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 20%,
+    rgba(15, 244, 198, 0.1) 25%,
+    rgba(248, 28, 229, 0.1) 30%,
+    transparent 35%,
+    transparent 65%,
+    rgba(15, 244, 198, 0.1) 70%,
+    rgba(248, 28, 229, 0.1) 75%,
+    transparent 80%
+  );
+  transform: rotate(30deg);
+  animation: holographic-shift 3s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes holographic-shift {
+  0% { transform: rotate(30deg) translateY(30%) translateX(-30%); }
+  100% { transform: rotate(30deg) translateY(-30%) translateX(30%); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { filter: brightness(1) drop-shadow(0 0 5px rgba(15, 244, 198, 0.7)); }
+  50% { filter: brightness(1.2) drop-shadow(0 0 10px rgba(15, 244, 198, 0.9)); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes matrix-rain {
+  0% {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(100vh);
+  }
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: var(--neon-cyan) }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--cyber-black);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--neon-cyan);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--neon-pink);
+}
